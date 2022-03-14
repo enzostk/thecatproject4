@@ -61,3 +61,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'table_print'
 gem 'faker'
+gem 'webpacker'

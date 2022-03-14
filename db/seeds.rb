@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Product.destroy_all
+
+5.times do |i| product = Product.create!(
+  title: "Petit chat",
+  description: "Petit con de chat",
+  price: 12,
+  image_url: "cat#{i+1}.png"
+);
+end
