@@ -1,0 +1,12 @@
+class Attendance < ApplicationRecord
+  after_create :email_send
+
+  belongs_to :user
+
+
+  def email_send
+    product = self.product
+    product_admin = product.product_admin
+    UserMailer.product_subscription(product_admin, product, user).deliver_now
+  end
+end

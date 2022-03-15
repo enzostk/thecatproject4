@@ -62,3 +62,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'table_print'
 gem 'faker'
 gem 'webpacker'
+gem 'action'
+gem 'stripe'
+#gem 'corona'
+
