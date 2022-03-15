@@ -9,7 +9,7 @@
 Product.destroy_all
 
 5.times do |i| product = Product.create!(
-  title: "Petit chat",
+  title: "Petit chat#{i+1}",
   description: "Petit con de chat",
   price: 12,
   image_url: "cat#{i+1}.png"
