@@ -2,3 +2,759 @@
   ↳ bin/rails:9
   [1m[35m (1.3ms)[0m  [1m[35mCREATE DATABASE "thecatproject4_test" ENCODING = 'unicode'[0m
   ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2174754379616542815)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateProducts (20220314145337)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (21.6ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "title" character varying, "description" text, "price" decimal, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20220314145337_create_products.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220314145337"]]
+  ↳ bin/rails:9
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(2174754379616542815)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for 127.0.0.1 at 2022-03-14 15:53:56 +0100
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/enzo/.rvm/gems/ruby-2.7.4/gems/activerecord-5.2.7/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/enzo/.rvm/gems/ruby-2.7.4/gems/railties-5.2.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/enzo/.rvm/gems/ruby-2.7.4/gems/railties-5.2.7/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 15:54:00 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 930ms (Views: 925.0ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2022-03-14 15:54:02 +0100
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (1531.7ms)
+  Rendered products/new.html.erb within layouts/application (1533.2ms)
+Completed 200 OK in 1549ms (Views: 1542.3ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2022-03-14 15:55:10 +0100
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VdjH9LRabyjwvulUoR7JQ9qZmQ60LWzfWBdwp6904opERuuLoYeUdRtghDWeliMweID3aBhipG0htMi5vY7CPQ==", "product"=>{"title"=>"Epi", "description"=>"Petit chat très chiant ", "price"=>"10", "image_url"=>"data:image/jpeg;base64,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"}, "commit"=>"Create Product"}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:27
+  [1m[36mProduct Create (1.1ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Epi"], ["description", "Petit chat très chiant "], ["price", "10.0"], ["image_url", "data:image/jpeg;base64,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"], ["created_at", "2022-03-14 14:55:10.061349"], ["updated_at", "2022-03-14 14:55:10.061349"]]
+  ↳ app/controllers/products_controller.rb:27
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:27
+Redirected to http://localhost:3000/products/1
+Completed 302 Found in 9ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2022-03-14 15:55:10 +0100
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2022-03-14 15:55:15 +0100
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (1.9ms)
+  Rendered products/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2022-03-14 15:55:17 +0100
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YgaDLxb8FQAyhNEqwEXVWTBA/WpvmfQ2E0Io6daGJ4FzmK9QAyHuXdlavEv/zT8qklmTDMPWPIRq4ZD3xHwHNg==", "product"=>{"title"=>"Epi", "description"=>"Petit chat très chiant ", "price"=>"10", "image_url"=>""}, "commit"=>"Create Product"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:27
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Epi"], ["description", "Petit chat très chiant "], ["price", "10.0"], ["image_url", ""], ["created_at", "2022-03-14 14:55:17.940761"], ["updated_at", "2022-03-14 14:55:17.940761"]]
+  ↳ app/controllers/products_controller.rb:27
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:27
+Redirected to http://localhost:3000/products/2
+Completed 302 Found in 9ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/products/2" for 127.0.0.1 at 2022-03-14 15:55:17 +0100
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 19ms (Views: 16.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 15:55:21 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 27ms (Views: 25.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 15:56:56 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 19ms (Views: 18.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2022-03-14 15:56:57 +0100
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (1.9ms)
+  Rendered products/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mProduct Destroy (0.6ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mProduct Destroy (0.2ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Petit chat"], ["description", "Petit con de chat"], ["price", "12.0"], ["image_url", "test.png"], ["created_at", "2022-03-14 14:59:56.948031"], ["updated_at", "2022-03-14 14:59:56.948031"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Petit chat"], ["description", "Petit con de chat"], ["price", "12.0"], ["image_url", "test.png"], ["created_at", "2022-03-14 14:59:56.953138"], ["updated_at", "2022-03-14 14:59:56.953138"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Petit chat"], ["description", "Petit con de chat"], ["price", "12.0"], ["image_url", "test.png"], ["created_at", "2022-03-14 14:59:56.957786"], ["updated_at", "2022-03-14 14:59:56.957786"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Petit chat"], ["description", "Petit con de chat"], ["price", "12.0"], ["image_url", "test.png"], ["created_at", "2022-03-14 14:59:56.963217"], ["updated_at", "2022-03-14 14:59:56.963217"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Petit chat"], ["description", "Petit con de chat"], ["price", "12.0"], ["image_url", "test.png"], ["created_at", "2022-03-14 14:59:56.968444"], ["updated_at", "2022-03-14 14:59:56.968444"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+Started GET "/products/new" for 127.0.0.1 at 2022-03-14 15:59:58 +0100
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/enzo/.rvm/gems/ruby-2.7.4/gems/activerecord-5.2.7/lib/active_record/log_subscriber.rb:98
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (196.6ms)
+  Rendered products/new.html.erb within layouts/application (198.0ms)
+Completed 200 OK in 396ms (Views: 382.3ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:00:04 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:11:52 +0100
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/enzo/.rvm/gems/ruby-2.7.4/gems/activerecord-5.2.7/lib/active_record/log_subscriber.rb:98
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 500ms (Views: 493.1ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:13:15 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:14:19 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2022-03-14 16:14:26 +0100
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (379.3ms)
+  Rendered products/new.html.erb within layouts/application (380.1ms)
+Completed 200 OK in 389ms (Views: 389.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2022-03-14 16:14:32 +0100
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ohepAxP397aBxKIbNFd7vyWUUwFc+o7TP+dRh5mjPnaziYV8BioM62oaz3oL35HMh409Z/C1RmFGROmZi1kewQ==", "product"=>{"title"=>"test", "description"=>"test", "price"=>"12", "image_url"=>"test"}, "commit"=>"Create Product"}
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:27
+  [1m[36mProduct Create (1.6ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "test"], ["description", "test"], ["price", "12.0"], ["image_url", "test"], ["created_at", "2022-03-14 15:14:32.950992"], ["updated_at", "2022-03-14 15:14:32.950992"]]
+  ↳ app/controllers/products_controller.rb:27
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:27
+Redirected to http://localhost:3000/products/8
+Completed 302 Found in 10ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/products/8" for 127.0.0.1 at 2022-03-14 16:14:32 +0100
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 24ms (Views: 18.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/products/8/edit" for 127.0.0.1 at 2022-03-14 16:14:36 +0100
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (2.1ms)
+  Rendered products/edit.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 14ms (Views: 10.9ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/products/8" for 127.0.0.1 at 2022-03-14 16:14:39 +0100
+Processing by ProductsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"//TBBTy8acFpgnwn0d0BszV2B4nyALHL7Z5CdAzPh4ruau16KWGSnIJcEUbuVevAl29p715PeXmUPfpqHjWnPQ==", "product"=>{"title"=>"test", "description"=>"test", "price"=>"12.0", "image_url"=>"test3"}, "commit"=>"Update Product", "id"=>"8"}
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:40
+  [1m[36mProduct Update (0.5ms)[0m  [1m[33mUPDATE "products" SET "image_url" = $1, "updated_at" = $2 WHERE "products"."id" = $3[0m  [["image_url", "test3"], ["updated_at", "2022-03-14 15:14:39.922134"], ["id", 8]]
+  ↳ app/controllers/products_controller.rb:40
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:40
+Redirected to http://localhost:3000/products/8
+Completed 302 Found in 9ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/products/8" for 127.0.0.1 at 2022-03-14 16:14:39 +0100
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:14:40 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:15:51 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/products/7" for 127.0.0.1 at 2022-03-14 16:16:04 +0100
+Processing by ProductsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wyqHFLs6UCfpRs8AoweS+1z5Ykb9ZyNXAUJ6OvSonZrStKtrrueregKYomGcj3iI/uAMIFEo6+V44cIk5lK9LQ==", "id"=>"7"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:52
+  [1m[36mProduct Destroy (1.7ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/products_controller.rb:52
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:52
+Redirected to http://localhost:3000/products
+Completed 302 Found in 9ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:16:04 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (4.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 15ms (Views: 10.1ms | ActiveRecord: 4.9ms)
+
+
+Started DELETE "/products/8" for 127.0.0.1 at 2022-03-14 16:16:08 +0100
+Processing by ProductsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"8PiKIkLRypNF76CsWBQXK/zLs/1y8M2/ih6ktV7N4RrhZqZdVwwxzq4xzc1nnP1YXtLdm96/BQ3zvRyrTDfBrQ==", "id"=>"8"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:52
+  [1m[36mProduct Destroy (0.4ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 8]]
+  ↳ app/controllers/products_controller.rb:52
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:52
+Redirected to http://localhost:3000/products
+Completed 302 Found in 7ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:16:08 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 16ms (Views: 14.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2022-03-14 16:16:09 +0100
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (4.9ms)
+  Rendered products/new.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2022-03-14 16:16:17 +0100
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+R3mLaf/GK6/xVPKvzr3Crj1LqLI6iy/6k+jPzJdf/Dog8pSsiLj81QbPquAsh15GuxAxGSl5A2T7BshIKdfRw==", "product"=>{"title"=>"test", "description"=>"test", "price"=>"test", "image_url"=>"test"}, "commit"=>"Create Product"}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:27
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "test"], ["description", "test"], ["price", "0.0"], ["image_url", "test"], ["created_at", "2022-03-14 15:16:17.866612"], ["updated_at", "2022-03-14 15:16:17.866612"]]
+  ↳ app/controllers/products_controller.rb:27
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:27
+Redirected to http://localhost:3000/products/9
+Completed 302 Found in 9ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/products/9" for 127.0.0.1 at 2022-03-14 16:16:17 +0100
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 29ms (Views: 10.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:16:20 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:22:34 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (30.3ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (The asset "test.png" is not present in the asset pipeline.
+):
+    19:         <td><%= product.title %></td>
+    20:         <td><%= product.description %></td>
+    21:         <td><%= product.price %></td>
+    22:         <td><%= image_tag product.image_url %></td>
+    23:         <td><%= link_to 'Show', product, class: "btn btn-primary" %></td>
+    24:         <td><%= link_to 'Edit', edit_product_path(product),class: "btn btn-secondary" %></td>
+    25:         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger" %></td>
+  
+app/views/products/index.html.erb:22:in `block in _app_views_products_index_html_erb__3148194151404694988_15400'
+app/views/products/index.html.erb:17:in `_app_views_products_index_html_erb__3148194151404694988_15400'
+Started GET "/products/9/edit" for 127.0.0.1 at 2022-03-14 16:22:52 +0100
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (3.6ms)
+  Rendered products/edit.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 53ms (Views: 50.5ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/products/9" for 127.0.0.1 at 2022-03-14 16:22:58 +0100
+Processing by ProductsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ISoqBnGUJoZ1Ip2jCU6OjvjsGfd7uJCLYZSDqTD1+yEwtAZ5ZEnd25788MI2xmT9WvV3kdf3WDkYNzu3Ig/blg==", "product"=>{"title"=>"test", "description"=>"test", "price"=>"0.0", "image_url"=>"cat1.png"}, "commit"=>"Update Product", "id"=>"9"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:40
+  [1m[36mProduct Update (0.7ms)[0m  [1m[33mUPDATE "products" SET "image_url" = $1, "updated_at" = $2 WHERE "products"."id" = $3[0m  [["image_url", "cat1.png"], ["updated_at", "2022-03-14 15:22:58.938301"], ["id", 9]]
+  ↳ app/controllers/products_controller.rb:40
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:40
+Redirected to http://localhost:3000/products/9
+Completed 302 Found in 9ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/products/9" for 127.0.0.1 at 2022-03-14 16:22:58 +0100
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 16ms (Views: 14.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:23:00 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (The asset "test.png" is not present in the asset pipeline.
+):
+    19:         <td><%= product.title %></td>
+    20:         <td><%= product.description %></td>
+    21:         <td><%= product.price %></td>
+    22:         <td><%= image_tag product.image_url %></td>
+    23:         <td><%= link_to 'Show', product, class: "btn btn-primary" %></td>
+    24:         <td><%= link_to 'Edit', edit_product_path(product),class: "btn btn-secondary" %></td>
+    25:         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger" %></td>
+  
+app/views/products/index.html.erb:22:in `block in _app_views_products_index_html_erb__3148194151404694988_16120'
+app/views/products/index.html.erb:17:in `_app_views_products_index_html_erb__3148194151404694988_16120'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mProduct Destroy (0.5ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 3]]
+  ↳ db/seeds.rb:9
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mProduct Destroy (0.2ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 4]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mProduct Destroy (0.2ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 5]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mProduct Destroy (0.2ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 6]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:9
+  [1m[36mProduct Destroy (0.1ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 9]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Petit chat"], ["description", "Petit con de chat"], ["price", "12.0"], ["image_url", "cat1.png"], ["created_at", "2022-03-14 15:23:38.925228"], ["updated_at", "2022-03-14 15:23:38.925228"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mProduct Create (0.1ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Petit chat"], ["description", "Petit con de chat"], ["price", "12.0"], ["image_url", "cat2.png"], ["created_at", "2022-03-14 15:23:38.928594"], ["updated_at", "2022-03-14 15:23:38.928594"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Petit chat"], ["description", "Petit con de chat"], ["price", "12.0"], ["image_url", "cat3.png"], ["created_at", "2022-03-14 15:23:38.932299"], ["updated_at", "2022-03-14 15:23:38.932299"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Petit chat"], ["description", "Petit con de chat"], ["price", "12.0"], ["image_url", "cat4.png"], ["created_at", "2022-03-14 15:23:38.936962"], ["updated_at", "2022-03-14 15:23:38.936962"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Petit chat"], ["description", "Petit con de chat"], ["price", "12.0"], ["image_url", "cat5.png"], ["created_at", "2022-03-14 15:23:38.941168"], ["updated_at", "2022-03-14 15:23:38.941168"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:23:43 +0100
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/enzo/.rvm/gems/ruby-2.7.4/gems/activerecord-5.2.7/lib/active_record/log_subscriber.rb:98
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (373.2ms)
+Completed 200 OK in 386ms (Views: 380.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:24:13 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:24:20 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:24:25 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:24:33 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 18ms (Views: 16.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products/11" for 127.0.0.1 at 2022-03-14 16:24:41 +0100
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 16ms (Views: 11.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/products/11/edit" for 127.0.0.1 at 2022-03-14 16:24:42 +0100
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/edit.html.erb within layouts/application
+  Rendered products/_form.html.erb (177.6ms)
+  Rendered products/edit.html.erb within layouts/application (178.6ms)
+Completed 200 OK in 192ms (Views: 189.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/products/11" for 127.0.0.1 at 2022-03-14 16:24:47 +0100
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 21ms (Views: 18.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 16:24:48 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 24ms (Views: 22.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 17:01:06 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 34ms (Views: 24.1ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2022-03-14 17:01:08 +0100
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (2.3ms)
+  Rendered products/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 13ms (Views: 12.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2022-03-14 17:01:31 +0100
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qBOHD3SGBErJozM5NDBKaTgxGX9W4UXR/Y2amcSfFta5jatwYVv/FyJ9XlgLuKAamih3GfqujWOELiKH1mU2YQ==", "product"=>{"title"=>"Epi", "description"=>"TARACEDECHATDEMERDEÙ$Ù*ÙÙ*", "price"=>"Je te paie pour le prendre", "image_url"=>"cat1.png"}, "commit"=>"Create Product"}
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:27
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("title", "description", "price", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Epi"], ["description", "TARACEDECHATDEMERDEÙ$Ù*ÙÙ*"], ["price", "0.0"], ["image_url", "cat1.png"], ["created_at", "2022-03-14 16:01:31.070091"], ["updated_at", "2022-03-14 16:01:31.070091"]]
+  ↳ app/controllers/products_controller.rb:27
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:27
+Redirected to http://localhost:3000/products/15
+Completed 302 Found in 8ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/products/15" for 127.0.0.1 at 2022-03-14 17:01:31 +0100
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  Rendering products/show.html.erb within layouts/application
+  Rendered products/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 18ms (Views: 11.6ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 17:01:35 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 24ms (Views: 22.2ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/products/15" for 127.0.0.1 at 2022-03-14 17:01:41 +0100
+Processing by ProductsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HOWPJTG0iaPA9/4AZleN+CIOaF1O796erhoBf8DLSuwNe6NaJGly/ispk2FZ32eLgBcGO+KgFizXublh0jFqWw==", "id"=>"15"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:52
+  [1m[36mProduct Destroy (0.4ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 15]]
+  ↳ app/controllers/products_controller.rb:52
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:52
+Redirected to http://localhost:3000/products
+Completed 302 Found in 6ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 17:01:41 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 21ms (Views: 19.1ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/products/14" for 127.0.0.1 at 2022-03-14 17:01:43 +0100
+Processing by ProductsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"KaHv9bbOoS7e/BqiHjkg5KjqpJXZuEPNrQDxijYLTDg4P8OKoxNaczUid8MhscqXCvPK83X3i3/Uo0mUJPFsjw==", "id"=>"14"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:63
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:52
+  [1m[36mProduct Destroy (0.3ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 14]]
+  ↳ app/controllers/products_controller.rb:52
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:52
+Redirected to http://localhost:3000/products
+Completed 302 Found in 11ms (ActiveRecord: 8.4ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 17:01:43 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 21ms (Views: 19.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/products/new" for 127.0.0.1 at 2022-03-14 17:02:02 +0100
+Processing by ProductsController#new as HTML
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (1.9ms)
+  Rendered products/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 18ms (Views: 17.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/products" for 127.0.0.1 at 2022-03-14 17:02:04 +0100
+Processing by ProductsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c7WnuYE8MsJOet7PRK4ktBjA4AOJiV0rYl3V2s6f3MhiK4vGlOHJn6Wks657Js7HutmOZSXGlZkb/m3E3GX8fw==", "product"=>{"title"=>"", "description"=>"", "price"=>"", "image_url"=>""}, "commit"=>"Create Product"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:27
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/products_controller.rb:27
+  Rendering products/new.html.erb within layouts/application
+  Rendered products/_form.html.erb (2.2ms)
+  Rendered products/new.html.erb within layouts/application (3.6ms)
+Completed 422 Unprocessable Entity in 19ms (Views: 16.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/products" for 127.0.0.1 at 2022-03-14 17:07:47 +0100
+Processing by ProductsController#index as HTML
+  Rendering products/index.html.erb within layouts/application
+  [1m[36mProduct Load (3.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/views/products/index.html.erb:17
+  Rendered products/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 16ms (Views: 11.9ms | ActiveRecord: 3.8ms)
+
+
