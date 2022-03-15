@@ -20,6 +20,7 @@
 }
 body, html{height:100%;}
 body { 
+	width: 100%;
   background-color: #cccccc;
   height: 100%; 
   margin: 0; 
@@ -53,7 +54,7 @@ body {
 
 /*********************************************************** FOOTER *****************************************************************/
 .containerfooter{
-	max-width: 1170px;
+	max-width: 100%;
 	margin:auto;
 }
 .row1{
@@ -62,7 +63,6 @@ body {
 }
 .footer{
 	background-color: #eb6864;
-  position: fixed;
   bottom: 0;
   width: 100%;
   padding: 30px;

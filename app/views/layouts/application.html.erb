@@ -4,7 +4,6 @@
     <title>Thecatproject4</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_pack_tag 'application' %>
@@ -14,10 +13,9 @@
 
   <body>
   <%= render partial: "shared/navbar" %>
-  <%= render partial: "shared/footer" %>
   <div class="container">
     <%= yield %>
   </div>
-  
+  <%= render partial: "shared/footer" %>
   </body>
 </html>

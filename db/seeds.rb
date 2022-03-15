@@ -8,7 +8,7 @@
 
 Product.destroy_all
 
-5.times do |i| product = Product.create!(
+10.times do |i| product = Product.create!(
   title: "Petit chat#{i+1}",
   description: "Petit con de chat",
   price: 12,
