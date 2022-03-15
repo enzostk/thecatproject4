@@ -1,0 +1,2 @@
+module JoinTableProductsCartsHelper
+end
