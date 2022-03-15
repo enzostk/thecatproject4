@@ -829,3 +829,36 @@ Migrating to CreateCarts (20220315071507)
 =======
 >>>>>>> de48309b13ae9d8a7f435fdca8c4f12a6ca5260c
 >>>>>>> user
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2174754379616542815)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateJoinTableProductsCarts (20220315073240)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (17.3ms)[0m  [1m[35mCREATE TABLE "join_table_products_carts" ("id" bigserial primary key, "product_id" bigint, "cart_id" bigint, "quantity" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_1f72fd370b"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+, CONSTRAINT "fk_rails_57e77ea9ce"
+FOREIGN KEY ("cart_id")
+  REFERENCES "carts" ("id")
+)[0m
+  ↳ db/migrate/20220315073240_create_join_table_products_carts.rb:3
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX  "index_join_table_products_carts_on_product_id" ON "join_table_products_carts"  ("product_id")[0m
+  ↳ db/migrate/20220315073240_create_join_table_products_carts.rb:3
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_join_table_products_carts_on_cart_id" ON "join_table_products_carts"  ("cart_id")[0m
+  ↳ db/migrate/20220315073240_create_join_table_products_carts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220315073240"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2174754379616542815)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
